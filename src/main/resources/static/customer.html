@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Call Waiter</title>
+</head>
+<body style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100vh;">
+<h1>Need Assistance?</h1>
+<button onclick="callWaiter()" style="padding: 20px 40px; font-size: 24px;">Call Waiter</button>
+
+<script>
+    function callWaiter() {
+        fetch('/api/call-waiter', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ tableId: 'table-1' })
+        }).then(response => {
+            if (response.ok) {
+                alert('Waiter notified!');
+            } else {
+                alert('Failed to notify waiter.');
+            }
+        });
+    }
+</script>
+</body>
+</html>
